@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>//12
+#include <iostream>//12
 #pragma warning(disable : 4996)
 
 char* functionC(char* destination, const char* p, const char* q, const int n, const int m) {

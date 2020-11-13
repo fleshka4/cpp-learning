@@ -1,4 +1,5 @@
-#include <bits/stdc++.h> //11 вариант (сумма индексов минимального и максимального элементов)
+#include <iostream> //11 вариант (сумма индексов минимального и максимального элементов)
+#include <limits.h>
 #include "helper.h"
 
 #pragma warning(disable : 4996)

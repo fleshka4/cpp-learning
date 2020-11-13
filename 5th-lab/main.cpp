@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>//12
+#include <iostream>//12
 #include <regex>
 #include "partOne.h"
 #include "partTwo.h"

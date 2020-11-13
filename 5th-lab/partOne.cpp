@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
 template <typename T>
 int getNumberOfSortedRows(const T doubleArray, const int numOfRows, const int numOfColumns) {

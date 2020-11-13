@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #pragma warning(disable : 4996)
 
 int getMaxSum(int* const* arr, const int& size) {

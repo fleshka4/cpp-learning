@@ -39,4 +39,6 @@ git remote rm origin
 
 -  [5th lab](https://github.com/fleshka4/cpp-learning/tree/5th-lab)
 
+-  [6th lab](https://github.com/fleshka4/cpp-learning/tree/6th-lab)
+
  ### [Home tasks](https://github.com/fleshka4/cppLearning-only-homeTasks-)

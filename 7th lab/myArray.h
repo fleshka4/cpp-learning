@@ -21,11 +21,10 @@ public:
   T& operator[](size_t index);
   void resize(size_t n);
   void printScreen(size_t count);
-  void printInFile(size_t count);
 
 private:
   T* arr_;
-  size_t capacity_{};
+  size_t capacity_;
   size_t size_;
 };
 
@@ -124,72 +123,6 @@ void MyArray<T>::printScreen(size_t count) {
     }
   }
   std::cout << '\n';
-}
-
-template<class T>
-void MyArray<T>::printInFile(size_t count) {
-  std::ofstream out("output.txt");
-  size_t maxLengthPayAcc = 0;
-  size_t maxLengthPayOrg = 0;
-  size_t maxLengthRecipAcc = 0;
-  size_t maxLengthRecipOrg = 0;
-  size_t maxLengthPay = 0;
-  for (size_t i = 0; i < count; ++i) {
-    if (arr_[i].getPayAccLength() > maxLengthPayAcc) {
-      maxLengthPayAcc = arr_[i].getPayAccLength();
-    }
-    if (arr_[i].getPayOrg().length() > maxLengthPayOrg) {
-      maxLengthPayOrg = arr_[i].getPayOrg().length();
-    }
-    if (arr_[i].getRecipAccLength() > maxLengthRecipAcc) {
-      maxLengthRecipAcc = arr_[i].getRecipAccLength();
-    }
-    if (arr_[i].getRecipOrg().length() > maxLengthRecipOrg) {
-      maxLengthRecipOrg = arr_[i].getRecipOrg().length();
-    }
-    if (arr_[i].getPayLength() > maxLengthPay) {
-      maxLengthPay = arr_[i].getPayLength();
-    }
-  }
-  MyString payAccHeader = "Payer's current account";
-  MyString payOrgHeader = "Payer's organization";
-  MyString recipAccHeader = "Recipient's current account";
-  MyString recipOrgHeader = "Recipient's organization";
-  MyString payHeader = "Payment";
-  size_t lengthPayAccHeader = (maxLengthPayAcc < payAccHeader.length()) ? 0 : (maxLengthPayAcc - payAccHeader.length()) + 3;
-  size_t lengthPayOrgHeader = (maxLengthPayOrg < payOrgHeader.length()) ? 0 : (maxLengthPayOrg - payOrgHeader.length()) + 3;
-  size_t lengthRecipAccHeader = (maxLengthRecipAcc < recipAccHeader.length()) ? 0 : (maxLengthRecipAcc - recipAccHeader.length()) + 3;
-  size_t lengthRecipOrgHeader = (maxLengthRecipOrg < recipOrgHeader.length()) ? 0 : (maxLengthRecipOrg - recipOrgHeader.length()) + 3;
-  size_t lengthPayHeader = (maxLengthPay < payHeader.length()) ? 0 : (maxLengthPay - payHeader.length()) + 3;
-  size_t sum = payAccHeader.length() + payOrgHeader.length() + recipAccHeader.length() + recipOrgHeader.length() + payHeader.length()
-             + ((lengthPayAccHeader == 0) ? 0 : lengthPayAccHeader - 3) + ((lengthPayOrgHeader == 0) ? 0 : lengthPayOrgHeader - 3)
-             + ((lengthRecipAccHeader == 0) ? 0 : lengthRecipAccHeader - 3) + ((lengthRecipOrgHeader == 0) ? 0 : lengthRecipOrgHeader - 3)
-             + ((lengthPayHeader == 0) ? 0 : lengthPayHeader - 3) + 16;
-  out.precision(255);
-  for (int i = 0; i < sum; ++i) {
-    out << '-';
-  }
-  out << '\n';
-  out << "| " << payAccHeader << std::setw(lengthPayAccHeader) << " | " << payOrgHeader << std::setw(lengthPayOrgHeader) << " | " << recipAccHeader
-      << std::setw(lengthRecipAccHeader) << " | " << recipOrgHeader << std::setw(lengthRecipOrgHeader) << " | " << payHeader << std::setw(lengthPayHeader) << " |\n";
-  for (int i = 0; i < sum; ++i) {
-    out << '-';
-  }
-  out << '\n';
-  for (size_t i = 0; i < count; ++i) {
-    size_t lengthPayAcc = ((maxLengthPayAcc > payAccHeader.length()) ? maxLengthPayAcc : payAccHeader.length()) - arr_[i].getPayAccLength() + 3;
-    size_t lengthPayOrg = ((maxLengthPayOrg > payOrgHeader.length()) ? maxLengthPayOrg : payOrgHeader.length()) - arr_[i].getPayOrg().length() + 3;
-    size_t lengthRecipAcc = ((maxLengthRecipAcc > recipAccHeader.length()) ? maxLengthRecipAcc : recipAccHeader.length()) - arr_[i].getRecipAccLength() + 3;
-    size_t lengthRecipOrg = ((maxLengthRecipOrg > recipOrgHeader.length()) ? maxLengthRecipOrg : recipOrgHeader.length()) - arr_[i].getRecipOrg().length() + 3;
-    size_t lengthPay = ((maxLengthPay > payHeader.length()) ? maxLengthPay : payHeader.length()) - arr_[i].getPayLength() + 3;
-    out << "| " << arr_[i].getPayAcc() << std::setw(lengthPayAcc) << " | " << arr_[i].getPayOrg() << std::setw(lengthPayOrg) << " | " << arr_[i].getRecipAcc()
-        << std::setw(lengthRecipAcc) << " | " << arr_[i].getRecipOrg() << std::setw(lengthRecipOrg) << " | " << arr_[i].getPay() << std::setw(lengthPay) << " |\n";
-  }
-  for (int i = 0; i < sum; ++i) {
-    out << '-';
-  }
-  out << '\n';
-  out.close();
 }
 
 #endif

@@ -27,7 +27,7 @@ public:
   [[nodiscard]] size_t getPayLength() const;
   [[nodiscard]] size_t getPayAcc() const;
   [[nodiscard]] size_t getRecipAcc() const;
-  [[nodiscard]] double getPay() const;
+  [[nodiscard]] size_t getPay() const;
   friend std::ostream& operator<<(std::ostream& os, const Payment& payment);
 
 private:

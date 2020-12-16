@@ -27,6 +27,17 @@ Payment::Payment(const Payment& other) {
 
 Payment::~Payment() = default;
 
+Payment& Payment::operator=(const Payment& other) {
+  if (&other == this) {
+    return *this;
+  }
+  this->payOrg_ = other.payOrg_;
+  this->recipOrg_ = other.recipOrg_;
+  this->payAcc_ = other.payAcc_;
+  this->recipAcc_ = other.recipAcc_;
+  this->pay_ = other.pay_;
+}
+
 bool Payment::operator==(const Payment& rhs) const {
   return recipAcc_ == rhs.recipAcc_ && payAcc_ == rhs.payAcc_ &&
          recipOrg_ == rhs.recipOrg_ && payOrg_ == rhs.payOrg_ &&

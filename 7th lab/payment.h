@@ -11,6 +11,7 @@ public:
           const MyString& recipOrg, const size_t& pay);
   Payment(const Payment& other);
   ~Payment();
+  Payment& operator=(const Payment& other);
   bool operator==(const Payment& rhs) const;
   friend bool operator!=(const Payment& lhs, const Payment& rhs);
   friend bool operator<(const Payment& lhs, const Payment& rhs);
@@ -27,7 +28,7 @@ public:
   [[nodiscard]] size_t getPayLength() const;
   [[nodiscard]] size_t getPayAcc() const;
   [[nodiscard]] size_t getRecipAcc() const;
-  [[nodiscard]] size_t getPay() const;
+  [[nodiscard]] double getPay() const;
   friend std::ostream& operator<<(std::ostream& os, const Payment& payment);
 
 private:
